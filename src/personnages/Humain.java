@@ -1,53 +1,61 @@
 package personnages;
 
 public class Humain {
+	
+	
+	
 	private String nom;
-	private String boisson;
-	private int nbargent;
+	private String boissonfavorite;
+	protected int nbargent;
 	
 	
-	public Humain(String nom,String boisson,int nbargent) {
-		this.nom =nom;
-		this.boisson=boisson;
-		this.nbargent=nbargent;
+	
+	public Humain(String nom,String boissonfavorite,int nbargent) {
+		this.nom = nom;
+		this.boissonfavorite = boissonfavorite;
+		this.nbargent = nbargent;
+		
 	}
+	
 	
 	public String getNom() {
 		return nom;
 	}
-	
-	public int getArg() {
+	public int getNbargent() {
 		return nbargent;
 	}
 	
-	
-	public void direBonjour() { //autre methode que dans gauloi savec prendre parole ()
-		
-		String message ="Bonjour ! Je m’appelle"+ nom + "et j’aime boire du" + boisson;
-		parler(message);	
-	}
-	
-    public void boire() {
-		
-		String message = "Mmmm, un bon verre de" + boisson + "! GLOUPS !";
-		parler(message);	
-	}
-
-	
 	public void parler(String message) {
-		System.out.println(nom + " : " + message);	
+		System.out.println(nom + " - " + message);
 	}
 	
+	public void direBonjour() {
+		String message = "Bonjour ! je m'appelle " + nom + " et j'aime boire du "+ boissonfavorite;
+		parler(message);
+	}
+	
+	public void boire() {
+		String message = "Mmmm, un bon verre de " + boissonfavorite + "! GLOUPS !";
+		parler(message);
+	}
 	
 	public void acheter(String bien, int prix) {
-		if(nbargent > prix) {
-			String message = "Jai" + nbargent +"sous en poche. Je vais pouvoir m'offrir" + bien +" à" + prix + "sous";
+		if(nbargent>prix) {
+			String message = "j'ai " + nbargent + " sous en poche je vais pouvoir m'offrir " 
+		+ bien + " a" + prix + " sous " ;
 			parler(message);
 		}else {
-			String message = "Je nai plus que"+ nbargent+ "sous en poche. Je ne peux même pas m'offrir"+ bien + "à"+ prix+ "sous";
+			String message = "je n'ai plus que " + nbargent + " sous en poche je ne peut pas m'offrir un " 
+		+ bien + " a" + prix + " sous " ;
 			parler(message);
 		}
 	}
 	
+	public void gagnerArgent(int nbargentgagner) {
+		nbargent += nbargentgagner;
+	}
 	
+	public void perdreArgent(int nbargentperdu) {
+		nbargent -= nbargentperdu;
+	}
 }
